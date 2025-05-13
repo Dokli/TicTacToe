@@ -12,4 +12,12 @@
         <maven.compiler.source>23</maven.compiler.source>
         <maven.compiler.target>23</maven.compiler.target>
     </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.32</version> <!-- aktuelle stabile Version -->
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>
