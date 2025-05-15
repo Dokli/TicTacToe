@@ -1,4 +1,15 @@
-# Workflow Convention
-dev-branch: (feature/*, draft/*, hotfix/*) -> pom snapshots
-main-branch: triggers jr file upload -> pom snapshots 
-release-branch: triggers junit tests, jr file -> new pom version
+# Workflow convention
+
+integration-branch (per sprint): from main, back to main
+dev-branches (feature/*, draft/*): from integration, back to integration
+hotfix-branch (hotfix/*): from main, back to main
+main-branch: triggers jr file upload
+release-branch: from main-> new pom version
+
+# Commit naming convention
+
+begin with
+- fix
+- hotfix
+- add
+- remove
