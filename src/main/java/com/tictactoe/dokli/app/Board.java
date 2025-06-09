@@ -20,6 +20,13 @@ public class Board {
     }
 
     public boolean isFull() {
+        for (char[] row : cells) {
+            for (char c : row) {
+                if (c == ' ') {
+                    return false;
+                }
+            }
+        }
         return true;
     }
 
