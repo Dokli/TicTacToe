@@ -24,11 +24,18 @@ public class Board {
     }
 
     public void clear() {
-
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                cells[i][j] = ' ';
+            }
+        }
     }
 
     public void print() {
-
+        for (int i = 0; i < 3; i++) {
+            System.out.println(" " + cells[i][0] + " | " + cells[i][1] + " | " + cells[i][2]);
+            if (i < 2) System.out.println("---+---+---");
+        }
     }
 
 }

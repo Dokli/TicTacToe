@@ -21,7 +21,7 @@ public class TicTacToe {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
-
+        board.clear();
 
             while (true) {
                 System.out.println("Current Player: " + currentPlayer.getMarker());
@@ -34,11 +34,13 @@ public class TicTacToe {
                         System.out.print("column (0–2): ");
                         y = scanner.nextInt();
                         if(x >= 0 && x <= 2 && y >= 0 && y <= 2){
-                            break;
+                            if(!board.isCellEmpty(x, y)){
+                                System.out.println("Please choose an empty square.");
+                            } else{
+                                break;
+                            }
                         }
-                        if(board.isCellEmpty(x, y)){
-                            System.out.println("Please choose an empty square.");
-                        }
+
                     }catch (InputMismatchException e) {
                         System.out.println("Only numbers bro...");
                         scanner.nextLine();
@@ -46,7 +48,7 @@ public class TicTacToe {
                 }
 
                 board.place(x, y, currentPlayer.getMarker());
-
+                board.print();
                 switchCurrentPlayer();
             }
     }
