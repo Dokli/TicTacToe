@@ -21,49 +21,59 @@ public class TicTacToe {
 
     public void start() {
         Scanner scanner = new Scanner(System.in);
-        board.clear();
+        boolean repeat;
+        do {
+            repeat = false;
+            board.clear();
 
-            while (true) {
-                System.out.println("Current Player: " + currentPlayer.getMarker());
-                int x, y;
+                while (true) {
+                    System.out.println("Current Player: " + currentPlayer.getMarker());
+                    int x, y;
 
-                while(true){
-                    try{
-                        System.out.print("line (0–2): ");
-                        x = scanner.nextInt();
-                        System.out.print("column (0–2): ");
-                        y = scanner.nextInt();
-                        if(x >= 0 && x <= 2 && y >= 0 && y <= 2){
-                            if(!board.isCellEmpty(x, y)){
-                                System.out.println("Please choose an empty square.");
-                            } else{
-                                break;
+                    while(true){
+                        try{
+                            System.out.print("line (0–2): ");
+                            x = scanner.nextInt();
+                            System.out.print("column (0–2): ");
+                            y = scanner.nextInt();
+                            if(x >= 0 && x <= 2 && y >= 0 && y <= 2){
+                                if(!board.isCellEmpty(x, y)){
+                                    System.out.println("Please choose an empty square.");
+                                } else{
+                                    break;
+                                }
                             }
+
+                        }catch (InputMismatchException e) {
+                            System.out.println("Only numbers bro...");
+                            scanner.nextLine();
                         }
-
-                    }catch (InputMismatchException e) {
-                        System.out.println("Only numbers bro...");
-                        scanner.nextLine();
                     }
-                }
 
-                board.place(x, y, currentPlayer.getMarker());
+                    board.place(x, y, currentPlayer.getMarker());
 
-                if (hasWinner()) {
+                    if (hasWinner()) {
+                        board.print();
+                        System.out.println("Player " + currentPlayer.getMarker() + " won!");
+                        break;
+                    }
+
+                    if (board.isFull()) {
+                        board.print();
+                        System.out.println("Draw!");
+                        break;
+                    }
+
                     board.print();
-                    System.out.println("Player " + currentPlayer.getMarker() + " won!");
-                    break;
-                }
+                    switchCurrentPlayer();
 
-                if (board.isFull()) {
-                    board.print();
-                    System.out.println("Draw!");
-                    break;
                 }
-
-                board.print();
-                switchCurrentPlayer();
+            System.out.print("Ready for another round? (y/n): ");
+            String answer = scanner.next();
+            if (answer.equalsIgnoreCase("y")) {
+                repeat = true;
             }
+        }while (repeat);
     }
 
     private void switchCurrentPlayer() {
