@@ -1,11 +1,13 @@
 package com.tictactoe.dokli.app;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 @AllArgsConstructor
+@Getter
 public class TicTacToe {
     private Player player1;
     private Player player2;
