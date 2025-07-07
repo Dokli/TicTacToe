@@ -5,7 +5,6 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class HumanPlayerImpl implements Player{
+public class PlayerImpl implements Player{
     private char marker;
-
 }

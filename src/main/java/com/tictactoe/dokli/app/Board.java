@@ -1,24 +1,48 @@
 package com.tictactoe.dokli.app;
 
-import lombok.AllArgsConstructor;
+import lombok.Getter;
 
-@AllArgsConstructor
+@Getter
 public class Board {
-    private char[][] cells;
+    private final char[][] cells;
 
-    boolean isCellEmpty(int x, int y){
-     return true;
+    public Board() {
+        cells = new char[3][3];
+        this.clear();
     }
-    void place(int x, int y, char marker){
 
+    public boolean isCellEmpty(int x, int y) {
+        return cells[x][y] == ' ';
     }
-    boolean isFull(){
+
+    public void place(int x, int y, char marker) {
+        cells[x][y] = marker;
+    }
+
+    public boolean isFull() {
+        for (char[] row : cells) {
+            for (char c : row) {
+                if (c == ' ') {
+                    return false;
+                }
+            }
+        }
         return true;
     }
-    void clear(){
 
+    public void clear() {
+        for (int i = 0; i < 3; i++){
+            for (int j = 0; j < 3; j++){
+                cells[i][j] = ' ';
+            }
+        }
     }
-    void print(){
 
+    public void print() {
+        for (int i = 0; i < 3; i++) {
+            System.out.println(" " + cells[i][0] + " | " + cells[i][1] + " | " + cells[i][2]);
+            if (i < 2) System.out.println("---+---+---");
+        }
     }
+
 }
