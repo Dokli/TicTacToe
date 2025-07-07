@@ -2,10 +2,6 @@ name: Java CI with Maven
 
 on:
   push:
-    branches-ignore: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
-  workflow_dispatch:
 
 jobs:
   test-feature-branch:
@@ -26,7 +22,7 @@ jobs:
         run: mvn test
 
   pr-build-main:
-    if: github.event_name == 'push' && github.base_ref == 'main'
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
